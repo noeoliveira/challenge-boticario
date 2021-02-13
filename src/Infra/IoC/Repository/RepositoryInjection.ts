@@ -1,10 +1,19 @@
 import { DependencyContainer } from "tsyringe";
-import { IConsultantRepository } from "../../../domain/Interfaces/Repository/IConsultantRepository";
-import { ConsultantRepository } from "../../Repository/ConsultantRepository";
+import {
+  IConsultantRepository,
+  IPurchaseRepository,
+} from "../../../domain/Interfaces/Repository";
+import { TokenIOC } from "../../../shared";
+import { ConsultantRepository, PurchaseRepository } from "../../Repository/";
 
 export const repositoryRegistration = (container: DependencyContainer) => {
   container.register<IConsultantRepository>(
-    "ConsultantRepository",
+    TokenIOC.ConsultantRepositoryToken,
     ConsultantRepository
+  );
+
+  container.register<IPurchaseRepository>(
+    TokenIOC.PurcheseRepositoryToken,
+    PurchaseRepository
   );
 };

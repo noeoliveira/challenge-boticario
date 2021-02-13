@@ -1,21 +1,41 @@
 import { injectable, inject } from "tsyringe";
 import { Consultant } from "../../domain/Entity/Consultant";
-import { IConsultant } from "../../domain/Interfaces/Entity";
+import { IConsultant } from "../../domain/Interfaces";
 import { IConsultantRepository } from "../../domain/Interfaces/Repository/IConsultantRepository";
+import { DTOTransformers, TokenIOC } from "../../shared";
+import { ConsultantInput } from "./input/consultant.input";
 import { IConsultantService } from "./Interfaces/IConsultantService";
+import { ConsultantDTO } from "./output/consultant.output";
 
 @injectable()
 export class ConsultantService implements IConsultantService {
   constructor(
-    @inject("ConsultantRepository")
+    @inject(TokenIOC.ConsultantRepositoryToken)
     private consultantRepository: IConsultantRepository
   ) {}
 
-  save(data: IConsultant): Promise<IConsultant> {
-    const consultant = new Consultant(data);
-    return this.consultantRepository.save(consultant);
+  private async removedPassword(input: IConsultant) {
+    if (!input) {
+      return input;
+    }
+    const { password, ...rest } = input;
+
+    return rest;
   }
-  findByCpf(cpf: string): Promise<IConsultant | undefined> {
-    return this.consultantRepository.findByCpf(cpf);
+
+  async save(data: ConsultantInput): Promise<ConsultantDTO> {
+    const consultant = new Consultant(data);
+
+    return DTOTransformers(
+      await this.consultantRepository.save(consultant),
+      ConsultantDTO
+    );
+  }
+
+  async findByCpf(cpf: string): Promise<ConsultantDTO | undefined> {
+    return DTOTransformers(
+      await this.consultantRepository.findByCpf(cpf),
+      ConsultantDTO
+    );
   }
 }

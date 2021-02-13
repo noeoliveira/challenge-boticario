@@ -1,6 +1,6 @@
 import { injectable } from "tsyringe";
 import { getRepository, Repository } from "typeorm";
-import { IConsultant } from "../../domain/Interfaces/Entity/IConsultant";
+import { IConsultant } from "../../domain/Interfaces/Entity";
 import { IConsultantRepository } from "../../domain/Interfaces/Repository/IConsultantRepository";
 import { ConsultantEntity } from "../database/entity/ConsultantEntity";
 

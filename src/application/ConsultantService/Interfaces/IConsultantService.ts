@@ -1,6 +1,7 @@
-import { IConsultant } from "../../../domain/Interfaces/Entity/IConsultant";
+import { ConsultantInput } from "../input/consultant.input";
+import { ConsultantDTO } from "../output/consultant.output";
 
 export interface IConsultantService {
-  save(consultant: IConsultant): Promise<IConsultant>;
-  findByCpf(cpf: string): Promise<IConsultant | undefined>;
+  save(consultant: ConsultantInput): Promise<ConsultantDTO>;
+  findByCpf(cpf: string): Promise<ConsultantDTO | undefined>;
 }

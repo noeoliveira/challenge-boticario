@@ -1,6 +1,5 @@
 import express, { Application } from "express";
 import {
-  createExpressServer,
   getMetadataArgsStorage,
   RoutingControllersOptions,
   useExpressServer,
