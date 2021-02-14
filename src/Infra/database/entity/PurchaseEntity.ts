@@ -6,7 +6,7 @@ import {
   UpdateDateColumn,
   ManyToOne,
 } from "typeorm";
-import { IConsultant, IPurchase, IStatus } from "../../../domain/Interfaces";
+import { IPurchase, IStatus } from "../../../domain/Interfaces";
 import { ConsultantEntity } from "./ConsultantEntity";
 import { StatusEntity } from "./StatusEntity";
 

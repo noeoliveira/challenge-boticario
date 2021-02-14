@@ -1,4 +1,4 @@
-import { AutoValidator, IsCPF } from "../../shared";
+import { AutoValidator } from "../../shared";
 import { IsNumber, IsPositive, IsString } from "class-validator";
 import { IStatus } from "../Interfaces";
 
@@ -10,7 +10,7 @@ export class Status implements Omit<IStatus, "id"> {
 
   @IsNumber()
   @IsPositive()
-  id?: number;
+  id!: number;
 
   @IsString()
   description!: string;

@@ -1,13 +1,12 @@
 import {
   Entity,
   Column,
-  PrimaryColumn,
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
   OneToMany,
 } from "typeorm";
-import { IConsultant, IStatus } from "../../../domain/Interfaces";
+import { IStatus } from "../../../domain/Interfaces";
 import { PurchaseEntity } from "./PurchaseEntity";
 
 @Entity(StatusEntity.relationTable)

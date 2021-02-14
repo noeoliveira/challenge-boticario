@@ -1,6 +1,5 @@
 import { injectable, inject } from "tsyringe";
 import { Purchase } from "../../domain/Entity";
-import { IPurchase } from "../../domain/Interfaces/Entity";
 import {
   IConsultantRepository,
   IPurchaseRepository,
