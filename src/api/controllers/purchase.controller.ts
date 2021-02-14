@@ -14,8 +14,8 @@ import {
   IPurchaseService,
   PurchaseDTO,
   PurchaseInput,
-} from "../../application/PurchaseService";
-import { TokenIOC } from "../../shared";
+} from "@application/PurchaseService";
+import { TokenIOC } from "@shared";
 
 @JsonController()
 export class PurchaseController {

@@ -1,3 +1,4 @@
+import { IStatus } from "@domain/Interfaces";
 import {
   Entity,
   Column,
@@ -6,7 +7,6 @@ import {
   UpdateDateColumn,
   OneToMany,
 } from "typeorm";
-import { IStatus } from "../../../domain/Interfaces";
 import { PurchaseEntity } from "./PurchaseEntity";
 
 @Entity(StatusEntity.relationTable)

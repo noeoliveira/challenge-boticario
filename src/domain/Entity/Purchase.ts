@@ -1,4 +1,5 @@
-import { AutoValidator } from "../../shared";
+import { IPurchase } from "@domain/Interfaces";
+import { AutoValidator } from "@shared";
 import {
   IsNumber,
   IsISO8601,
@@ -6,9 +7,7 @@ import {
   IsString,
   ValidateNested,
 } from "class-validator";
-import { IPurchase } from "../Interfaces/Entity/";
-import { Consultant } from "./Consultant";
-import { Status } from "./Status";
+import { Consultant, Status } from ".";
 
 @AutoValidator
 export class Purchase implements IPurchase {

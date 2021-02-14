@@ -1,8 +1,7 @@
+import { IStatusRepository, IStatus } from "@domain/Interfaces";
+import { StatusEntity } from "@infra/database/entity/StatusEntity";
 import { injectable } from "tsyringe";
 import { getRepository, Repository } from "typeorm";
-import { IStatus } from "../../domain/Interfaces/Entity";
-import { IStatusRepository } from "../../domain/Interfaces/Repository";
-import { StatusEntity } from "../database/entity/StatusEntity";
 
 @injectable()
 export class StatusRepository implements IStatusRepository {

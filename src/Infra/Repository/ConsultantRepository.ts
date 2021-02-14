@@ -1,8 +1,7 @@
+import { IConsultantRepository, IConsultant } from "@domain/Interfaces";
+import { ConsultantEntity } from "@infra/database/entity/ConsultantEntity";
 import { injectable } from "tsyringe";
 import { getRepository, Repository } from "typeorm";
-import { IConsultant } from "../../domain/Interfaces/Entity";
-import { IConsultantRepository } from "../../domain/Interfaces/Repository/IConsultantRepository";
-import { ConsultantEntity } from "../database/entity/ConsultantEntity";
 
 @injectable()
 export class ConsultantRepository implements IConsultantRepository {

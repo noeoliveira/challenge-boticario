@@ -1,8 +1,7 @@
 import { injectable, inject } from "tsyringe";
-import { Consultant } from "../../domain/Entity/Consultant";
-import { IConsultant } from "../../domain/Interfaces";
-import { IConsultantRepository } from "../../domain/Interfaces/Repository/IConsultantRepository";
-import { DTOTransformers, TokenIOC } from "../../shared";
+import { Consultant } from "@domain/Entity";
+import { IConsultant, IConsultantRepository } from "@domain/Interfaces";
+import { DTOTransformers, TokenIOC } from "@shared";
 import { ConsultantInput } from "./input/consultant.input";
 import { IConsultantService } from "./Interfaces/IConsultantService";
 import { ConsultantDTO } from "./output/consultant.output";

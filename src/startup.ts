@@ -1,7 +1,7 @@
 import "reflect-metadata";
-import "./Infra/IoC/RootInjectionDependency";
+import "@infra/IoC/RootInjectionDependency";
 import { createConnection } from "typeorm";
-import Server from "./api/app";
+import Server from "@api/app";
 
 async function connectDatabase() {
   try {

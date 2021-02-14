@@ -6,9 +6,9 @@ import {
   ValidateNested,
   IsOptional,
 } from "class-validator";
-import { IConsultant } from "../../../domain/Interfaces";
-import { IsCPF } from "../../../shared";
-import { PurchaseDTO } from "../../PurchaseService";
+import { IConsultant } from "@domain/Interfaces";
+import { IsCPF } from "@shared";
+import { PurchaseDTO } from "@application/PurchaseService";
 
 export class ConsultantDTO implements IConsultant {
   constructor(data: Partial<Omit<IConsultant, "password">>) {

@@ -10,12 +10,12 @@ import {
 import { ResponseSchema } from "routing-controllers-openapi";
 import { container } from "tsyringe";
 
+import { TokenIOC } from "@shared";
 import {
+  IConsultantService,
   ConsultantDTO,
   ConsultantInput,
-  IConsultantService,
-} from "../../application/ConsultantService";
-import { TokenIOC } from "../../shared/";
+} from "@application/ConsultantService";
 
 @JsonController()
 export class ConsultantController {

@@ -1,6 +1,6 @@
-import { AutoValidator } from "../../shared";
+import { IStatus } from "@domain/Interfaces";
+import { AutoValidator } from "@shared";
 import { IsNumber, IsPositive, IsString } from "class-validator";
-import { IStatus } from "../Interfaces";
 
 @AutoValidator
 export class Status implements Omit<IStatus, "id"> {

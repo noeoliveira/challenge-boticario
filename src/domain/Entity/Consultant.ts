@@ -1,8 +1,8 @@
-import { AutoValidator, IsCPF } from "../../shared";
-import { IsEmail, IsString, Matches, MinLength } from "class-validator";
-import { IConsultant } from "../Interfaces/Entity/IConsultant";
+import { AutoValidator, IsCPF } from "@shared";
+import { IsEmail, IsString } from "class-validator";
+import { IConsultant } from "@domain/Interfaces";
 import { hashSync, compareSync } from "bcryptjs";
-import { Purchase } from "./Purchase";
+import { Purchase } from ".";
 
 @AutoValidator
 export class Consultant implements IConsultant {

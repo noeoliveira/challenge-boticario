@@ -1,3 +1,5 @@
+import { ConsultantDTO } from "@application/ConsultantService";
+import { IStatus, IPurchase } from "@domain/Interfaces";
 import { Type } from "class-transformer";
 import {
   IsString,
@@ -7,8 +9,6 @@ import {
   ValidateNested,
   IsOptional,
 } from "class-validator";
-import { IPurchase, IStatus } from "../../../domain/Interfaces";
-import { ConsultantDTO } from "../../ConsultantService";
 
 class StatusDTO implements IStatus {
   constructor(data: Partial<IStatus>) {

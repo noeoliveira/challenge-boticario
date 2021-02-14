@@ -2,12 +2,12 @@ import { DependencyContainer } from "tsyringe";
 import {
   ConsultantService,
   IConsultantService,
-} from "../../../application/ConsultantService/";
+} from "@application/ConsultantService/";
 import {
   IPurchaseService,
   PurchaseService,
-} from "../../../application/PurchaseService";
-import { TokenIOC } from "../../../shared";
+} from "@application/PurchaseService";
+import { TokenIOC } from "@shared";
 
 export const applicationRegistration = (container: DependencyContainer) => {
   container.register<IConsultantService>(

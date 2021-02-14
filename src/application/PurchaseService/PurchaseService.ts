@@ -1,11 +1,11 @@
 import { injectable, inject } from "tsyringe";
-import { Purchase } from "../../domain/Entity";
+import { Purchase } from "@domain/Entity";
 import {
   IConsultantRepository,
   IPurchaseRepository,
   IStatusRepository,
-} from "../../domain/Interfaces/Repository/";
-import { DTOTransformers, TokenIOC } from "../../shared";
+} from "@domain/Interfaces/Repository";
+import { DTOTransformers, TokenIOC } from "@shared";
 import { PurchaseInput } from "./input/purchase.input";
 import { IPurchaseService } from "./Interfaces/IPurchaseService";
 import { PurchaseDTO } from "./output/purchase.output";

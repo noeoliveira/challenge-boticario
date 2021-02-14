@@ -1,5 +1,5 @@
 import { IsNumber, IsISO8601, IsString, IsPositive } from "class-validator";
-import { IPurchase } from "../../../domain/Interfaces";
+import { IPurchase } from "@domain/Interfaces";
 
 export class PurchaseInput
   implements

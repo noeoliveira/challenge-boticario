@@ -1,10 +1,9 @@
+import { IPurchaseRepository, IPurchase } from "@domain/Interfaces";
+import { ConsultantEntity } from "@infra/database/entity/ConsultantEntity";
+import { PurchaseEntity } from "@infra/database/entity/PurchaseEntity";
+import { StatusEntity } from "@infra/database/entity/StatusEntity";
 import { injectable } from "tsyringe";
 import { getRepository, Repository } from "typeorm";
-import { IPurchase } from "../../domain/Interfaces/Entity";
-import { IPurchaseRepository } from "../../domain/Interfaces/Repository";
-import { ConsultantEntity } from "../database/entity/ConsultantEntity";
-import { PurchaseEntity } from "../database/entity/PurchaseEntity";
-import { StatusEntity } from "../database/entity/StatusEntity";
 
 @injectable()
 export class PurchaseRepository implements IPurchaseRepository {

@@ -1,3 +1,4 @@
+import { IPurchase, IStatus } from "@domain/Interfaces";
 import {
   Entity,
   Column,
@@ -6,7 +7,6 @@ import {
   UpdateDateColumn,
   ManyToOne,
 } from "typeorm";
-import { IPurchase, IStatus } from "../../../domain/Interfaces";
 import { ConsultantEntity } from "./ConsultantEntity";
 import { StatusEntity } from "./StatusEntity";
 
