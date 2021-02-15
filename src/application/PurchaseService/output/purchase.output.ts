@@ -8,6 +8,7 @@ import {
   IsPositive,
   ValidateNested,
   IsOptional,
+  IsDate,
 } from "class-validator";
 
 class StatusDTO implements IStatus {
@@ -33,7 +34,8 @@ export class PurchaseDTO implements Omit<IPurchase, "consultant"> {
   @IsNumber()
   value!: number;
 
-  @IsISO8601()
+  @Type(() => Date)
+  @IsDate()
   date_purchase!: Date;
 
   @IsNumber()

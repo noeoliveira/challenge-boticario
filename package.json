@@ -6,13 +6,18 @@
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
     "@types/compression": "^1.7.0",
+    "@types/cors": "^2.8.10",
     "@types/express": "^4.17.8",
+    "@types/faker": "^5.1.6",
     "@types/jest": "^26.0.20",
     "@types/lodash": "^4.14.165",
     "@types/node": "^8.0.29",
     "@types/swagger-ui-express": "^4.1.2",
     "@types/uuid": "^8.3.0",
+    "cpf": "^2.0.1",
+    "faker": "^5.4.0",
     "jest": "^26.6.3",
+    "sql.js": "^1.4.0",
     "ts-jest": "^26.5.1",
     "ts-node": "3.3.0",
     "ts-node-dev": "^1.0.0",
@@ -26,6 +31,8 @@
     "class-validator": "^0.12.2",
     "class-validator-jsonschema": "^2.0.3",
     "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "helmet": "^4.4.1",
     "reflect-metadata": "^0.1.10",
@@ -40,6 +47,11 @@
     "start": "ts-node -r tsconfig-paths/register src/startup.ts",
     "dev": "ts-node-dev -r tsconfig-paths/register --inspect --respawn --transpile-only src/startup.ts",
     "typeorm": "ts-node node_modules/typeorm/cli.js",
-    "test": "jest"
+    "test": "jest",
+    "test:unit": "jest --testPathPattern=test.[tj]s",
+    "test:integration": "jest --testPathPattern=spec.[tj]s"
+  },
+  "jest": {
+    "rootDir": "./"
   }
 }

@@ -5,6 +5,7 @@ import {
   IsISO8601,
   ValidateNested,
   IsOptional,
+  IsDate,
 } from "class-validator";
 import { IConsultant } from "@domain/Interfaces";
 import { IsCPF } from "@shared";
@@ -32,9 +33,11 @@ export class ConsultantDTO implements IConsultant {
   @IsEmail()
   email!: string;
 
-  @IsISO8601()
+  @Type(() => Date)
+  @IsDate()
   created_at!: Date;
 
-  @IsISO8601()
+  @Type(() => Date)
+  @IsDate()
   updated_at!: Date;
 }

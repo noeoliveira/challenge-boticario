@@ -1,20 +1,15 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import "reflect-metadata";
 import "@infra/IoC/RootInjectionDependency";
-import { createConnection } from "typeorm";
 import Server from "@api/app";
-
-async function connectDatabase() {
-  try {
-    await createConnection();
-    console.log("Connected Database");
-  } catch (error) {
-    return console.log(error);
-  }
-}
+import { env } from "@shared";
+import { connectDatabase } from "./connectDatabase";
 
 async function main() {
   await connectDatabase();
-  Server.listen(3000, () => console.log("Server started"));
+  Server.listen(env.SERVER_PORT || 3000, () => console.log("Server started"));
 }
 
 (async () => await main())();

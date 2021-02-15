@@ -13,6 +13,7 @@ import { controllers } from "./controllers";
 
 import compression from "compression";
 import helmet from "helmet";
+import cors from "cors";
 
 class App {
   private expressApp: Application;
@@ -39,6 +40,7 @@ class App {
   private middlewares() {
     this.expressApp.use(compression());
     this.expressApp.use(helmet());
+    this.expressApp.use(cors());
   }
 
   private addSwagger() {

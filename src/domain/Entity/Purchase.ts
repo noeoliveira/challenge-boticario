@@ -6,6 +6,7 @@ import {
   IsPositive,
   IsString,
   ValidateNested,
+  IsDate,
 } from "class-validator";
 import { Consultant, Status } from ".";
 
@@ -21,7 +22,7 @@ export class Purchase implements IPurchase {
   @IsPositive()
   value!: number;
 
-  @IsISO8601()
+  @IsDate()
   date_purchase!: Date;
 
   @IsNumber()

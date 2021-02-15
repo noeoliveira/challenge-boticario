@@ -1,5 +1,12 @@
-import { IsNumber, IsISO8601, IsString, IsPositive } from "class-validator";
+import {
+  IsNumber,
+  IsISO8601,
+  IsString,
+  IsPositive,
+  IsDate,
+} from "class-validator";
 import { IPurchase } from "@domain/Interfaces";
+import { Type } from "class-transformer";
 
 export class PurchaseInput
   implements
@@ -17,6 +24,7 @@ export class PurchaseInput
   @IsPositive()
   value!: number;
 
-  @IsISO8601()
+  @Type(() => Date)
+  @IsDate()
   date_purchase!: Date;
 }
