@@ -6,11 +6,12 @@ import {
   Body,
   HttpCode,
   OnUndefined,
+  BadRequestError,
 } from "routing-controllers";
 import { ResponseSchema } from "routing-controllers-openapi";
 import { container } from "tsyringe";
 
-import { TokenIOC } from "@shared";
+import { AppError, TokenIOC } from "@shared";
 import {
   IConsultantService,
   ConsultantDTO,

@@ -8,12 +8,12 @@ import * as swaggerUiExpress from "swagger-ui-express";
 import { routingControllersToSpec } from "routing-controllers-openapi";
 import { validationMetadatasToSchemas } from "class-validator-jsonschema";
 import { defaultMetadataStorage } from "class-transformer/storage";
-
-import { controllers } from "./controllers";
-
 import compression from "compression";
 import helmet from "helmet";
 import cors from "cors";
+
+import { controllers } from "./controllers";
+import { middlewares } from "./middlewares";
 
 class App {
   private expressApp: Application;
@@ -22,8 +22,9 @@ class App {
   private routingControllersOptions: RoutingControllersOptions = {
     routePrefix: "/api",
     controllers,
-    middlewares: [compression(), helmet()],
+    middlewares,
     classTransformer: true,
+    defaultErrorHandler: false,
   };
 
   constructor() {

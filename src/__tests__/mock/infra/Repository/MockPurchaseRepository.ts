@@ -1,5 +1,6 @@
 import { IPurchaseRepository, IPurchase } from "@domain/Interfaces";
 import { PurchaseEntity } from "@infra/database/entity/PurchaseEntity";
+import { AppError } from "@shared";
 
 export class MockPurchaseRepository implements IPurchaseRepository {
   private repository: PurchaseEntity[] = [];
@@ -9,7 +10,7 @@ export class MockPurchaseRepository implements IPurchaseRepository {
       (item) => item.code_purchase === data.code_purchase
     );
     if (purchase) {
-      throw new Error("teste");
+      throw new AppError("Duplicate code");
     }
 
     purchase = new PurchaseEntity();

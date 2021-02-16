@@ -3,11 +3,9 @@ import {
   ConsultantService,
   IConsultantService,
 } from "@application/ConsultantService";
-import faker from "faker";
+import faker from "faker/locale/pt_BR";
 import cpf from "cpf";
 import { MockConsultantRepository } from "@test/mock/infra/Repository";
-
-faker.setLocale("pt_BR");
 
 describe("ConsultantService", () => {
   const consultantService: IConsultantService = new ConsultantService(

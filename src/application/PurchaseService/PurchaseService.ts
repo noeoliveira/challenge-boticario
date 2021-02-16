@@ -5,7 +5,7 @@ import {
   IPurchaseRepository,
   IStatusRepository,
 } from "@domain/Interfaces/Repository";
-import { DTOTransformers, TokenIOC } from "@shared";
+import { AppError, DTOTransformers, TokenIOC } from "@shared";
 import { PurchaseInput } from "./input/purchase.input";
 import { IPurchaseService } from "./Interfaces/IPurchaseService";
 import { PurchaseDTO } from "./output/purchase.output";
@@ -30,7 +30,7 @@ export class PurchaseService implements IPurchaseService {
     ]);
 
     if (!consultant || !status) {
-      throw new Error();
+      throw new AppError("Consultant not exists");
     }
 
     let cashbackPercentage;
