@@ -27,4 +27,28 @@ export class PurchaseRepository implements IPurchaseRepository {
       relations: [ConsultantEntity.relationTable, StatusEntity.relationTable],
     });
   }
+
+  findAll(id_consultant?: string): Promise<IPurchase[]> {
+    let where;
+    if (id_consultant) {
+      where = { consultant: { cpf: id_consultant } };
+    }
+    return this.repository.find({
+      where,
+      relations: [ConsultantEntity.relationTable, StatusEntity.relationTable],
+    });
+  }
+
+  update(code: string, purchase: Partial<IPurchase>): Promise<IPurchase> {
+    return this.repository.save(purchase);
+  }
+
+  async delete(code: string): Promise<IPurchase[]> {
+    return this.repository
+      .createQueryBuilder()
+      .delete()
+      .whereInIds(code)
+      .select(["code_purchase"])
+      .execute();
+  }
 }

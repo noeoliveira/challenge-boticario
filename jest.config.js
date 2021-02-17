@@ -6,7 +6,7 @@ module.exports = {
 
   collectCoverage: true,
 
-  collectCoverageFrom: ["<rootDir>/src/application/**/*.ts"],
+  // collectCoverageFrom: ["<rootDir>/src/application/**/*.ts"],
 
   coverageDirectory: "coverage",
 

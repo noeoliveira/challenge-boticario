@@ -45,9 +45,17 @@ describe("PurchaseService", () => {
         (dataPurchase.value * (purchase.cashback_percentage / 100)).toFixed(2)
       )
     ).toBe(purchase.cashback_value);
+
+    expect(
+      purchaseService.save({ ...dataPurchase, id_consultant: cpf.generate() })
+    ).rejects.toBeInstanceOf(AppError);
   });
 
-  it("should be able to search a purchase by CPF", async () => {
+  it("should be able to duplicate code purchase", async () => {
+    expect(purchaseService.save(dataPurchase)).rejects.toBeInstanceOf(AppError);
+  });
+
+  it("should be able to search a purchase by Code", async () => {
     const purchase = await purchaseService.findByCode(
       dataPurchase.code_purchase
     );
@@ -55,7 +63,28 @@ describe("PurchaseService", () => {
     expect(purchase).toBeInstanceOf(PurchaseDTO || undefined);
   });
 
-  it("should be able to duplicate code purchase", async () => {
-    expect(purchaseService.save(dataPurchase)).rejects.toBeInstanceOf(AppError);
+  it("should be able to get all purchase by Code", async () => {
+    const purchase = await purchaseService.findAll();
+
+    expect(Array.isArray(purchase)).toBe(true);
+  });
+
+  it("should be able to update purchase by Code", async () => {
+    const purchase = await purchaseService.update(dataPurchase.code_purchase, {
+      value: 3000,
+    });
+
+    expect(
+      Number((3000 * (purchase.cashback_percentage / 100)).toFixed(2))
+    ).toBe(purchase.cashback_value);
+  });
+
+  it("should be able to delete purchase by Code", async () => {
+    expect(purchaseService.delete(dataPurchase.code_purchase)).resolves.toBe(
+      undefined
+    );
+    expect(
+      purchaseService.delete(faker.random.alphaNumeric(6))
+    ).rejects.toBeInstanceOf(AppError);
   });
 });

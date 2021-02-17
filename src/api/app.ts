@@ -69,8 +69,9 @@ class App {
 
   private addSwagger() {
     const schemas = validationMetadatasToSchemas({
-      // classTransformerMetadataStorage: defaultMetadataStorage,
+      classTransformerMetadataStorage: defaultMetadataStorage,
       refPointerPrefix: "#/components/schemas/",
+      skipNullProperties: true,
     });
 
     const spec = routingControllersToSpec(

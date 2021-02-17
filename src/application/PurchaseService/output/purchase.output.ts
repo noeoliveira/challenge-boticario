@@ -1,6 +1,6 @@
 import { ConsultantDTO } from "@application/ConsultantService";
 import { IStatus, IPurchase } from "@domain/Interfaces";
-import { Type } from "class-transformer";
+import { Exclude, Type } from "class-transformer";
 import {
   IsString,
   IsNumber,
@@ -21,6 +21,12 @@ class StatusDTO implements IStatus {
 
   @IsString()
   description!: string;
+
+  @Exclude()
+  created_at!: Date;
+
+  @Exclude()
+  updated_at!: Date;
 }
 
 export class PurchaseDTO implements Omit<IPurchase, "consultant"> {
@@ -50,6 +56,13 @@ export class PurchaseDTO implements Omit<IPurchase, "consultant"> {
   consultant!: ConsultantDTO;
 
   @Type(() => StatusDTO)
-  @ValidateNested()
+  @ValidateNested({ each: true })
   status!: StatusDTO;
+
+  @IsDate()
+  created_at!: Date;
+
+  @Type(() => Date)
+  @IsDate()
+  updated_at!: Date;
 }

@@ -87,7 +87,16 @@ describe("Purchase routers", () => {
       .set({ Authorization: token });
 
     expect(response.status).toBe(201);
-    expect("Em validação").toBe(response.body.status.description);
+    expect(response.body.status.description).toBe("Em validação");
+
+    expect(response.body.cashback_value).toBe(
+      Number(
+        (
+          dataPurchase.value *
+          (response.body.cashback_percentage / 100)
+        ).toFixed(2)
+      )
+    );
 
     const responseAdmin = await api
       .post("/api/purchase")
@@ -95,7 +104,7 @@ describe("Purchase routers", () => {
       .set({ Authorization: token });
 
     expect(responseAdmin.status).toBe(201);
-    expect("Aprovado").toBe(responseAdmin.body.status.description);
+    expect(responseAdmin.body.status.description).toBe("Aprovado");
 
     await api
       .post("/api/purchase")
@@ -122,5 +131,62 @@ describe("Purchase routers", () => {
       .get(`/api/purchase/${faker.random.alphaNumeric(6)}`)
       .set({ Authorization: token })
       .expect(404);
+  });
+
+  it("should be able to get all purchases", async () => {
+    await api.get(`/api/purchases`).expect(401);
+
+    const response = await api
+      .get(`/api/purchases`)
+      .set({ Authorization: token });
+
+    expect(response.status).toBe(200);
+    expect(Array.isArray(response.body)).toBe(true);
+  });
+
+  it("should be able to update purchases", async () => {
+    await api.put(`/api/purchase/${dataPurchase.code_purchase}`).expect(401);
+
+    const response = await api
+      .put(`/api/purchase/${dataPurchase.code_purchase}`)
+      .send({ value: 2222 })
+      .set({ Authorization: token });
+
+    expect(response.status).toBe(200);
+    expect(response.body.cashback_value).toBe(
+      Number((2222 * (response.body.cashback_percentage / 100)).toFixed(2))
+    );
+
+    await api
+      .put(`/api/purchase/${dataPurchaseAdmin.code_purchase}`)
+      .send({ id_consultant: cpf.generate() })
+      .set({ Authorization: token })
+      .expect(404);
+
+    await api
+      .put(`/api/purchase/${dataPurchaseAdmin.code_purchase}`)
+      .send({ value: 2222 })
+      .set({ Authorization: token })
+      .expect(406);
+
+    await api
+      .put(`/api/purchase/${faker.random.alphaNumeric(6)}`)
+      .send({ value: 2222 })
+      .set({ Authorization: token })
+      .expect(404);
+  });
+
+  it("should be able to update purchases", async () => {
+    await api.delete(`/api/purchase/${dataPurchase.code_purchase}`).expect(401);
+
+    await api
+      .delete(`/api/purchase/${dataPurchase.code_purchase}`)
+      .set({ Authorization: token })
+      .expect(200);
+
+    await api
+      .delete(`/api/purchase/${dataPurchaseAdmin.code_purchase}`)
+      .set({ Authorization: token })
+      .expect(406);
   });
 });

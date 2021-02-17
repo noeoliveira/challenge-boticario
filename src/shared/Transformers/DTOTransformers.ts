@@ -1,6 +1,9 @@
-export function DTOTransformers(input: any, dto: any) {
+export function DTOTransformers(input: any, DTO: any) {
   if (input) {
-    return new dto(input);
+    if (Array.isArray(input)) {
+      return input.map((item) => new DTO(item));
+    }
+    return new DTO(input);
   }
   return input;
 }
