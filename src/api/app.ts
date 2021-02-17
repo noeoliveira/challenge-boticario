@@ -23,9 +23,7 @@ class App {
   private passport!: PassportStatic;
   public server!: Application;
 
-  constructor() {}
-
-  private routingControllersOptions: RoutingControllersOptions = {
+  private readonly routingControllersOptions: RoutingControllersOptions = {
     routePrefix: "/api",
     controllers,
     middlewares,
@@ -71,7 +69,7 @@ class App {
 
   private addSwagger() {
     const schemas = validationMetadatasToSchemas({
-      classTransformerMetadataStorage: defaultMetadataStorage,
+      // classTransformerMetadataStorage: defaultMetadataStorage,
       refPointerPrefix: "#/components/schemas/",
     });
 

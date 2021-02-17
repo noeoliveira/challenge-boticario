@@ -15,4 +15,6 @@ async function main() {
   );
 }
 
-(async () => await main())();
+(async () => {
+  await main();
+})();

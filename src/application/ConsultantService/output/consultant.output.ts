@@ -2,7 +2,6 @@ import { Exclude, Type } from "class-transformer";
 import {
   IsString,
   IsEmail,
-  IsISO8601,
   ValidateNested,
   IsOptional,
   IsDate,

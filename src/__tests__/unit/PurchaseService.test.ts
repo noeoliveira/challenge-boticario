@@ -1,4 +1,3 @@
-import { ConsultantDTO } from "@application/ConsultantService";
 import {
   MockConsultantRepository,
   MockPurchaseRepository,

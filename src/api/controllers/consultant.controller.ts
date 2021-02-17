@@ -7,7 +7,6 @@ import {
   HttpCode,
   OnUndefined,
   Authorized,
-  HeaderParam,
 } from "routing-controllers";
 import { OpenAPI, ResponseSchema } from "routing-controllers-openapi";
 import { container } from "tsyringe";
