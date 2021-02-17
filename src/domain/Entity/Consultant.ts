@@ -27,7 +27,7 @@ export class Consultant implements IConsultant {
     return hashSync(value);
   }
 
-  public comparePassword(value: string) {
-    return compareSync(this.password, value);
+  public static comparePassword(value: string, hash: string) {
+    return compareSync(value, hash);
   }
 }

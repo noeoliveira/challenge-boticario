@@ -1,6 +1,7 @@
 import {
   Middleware,
   ExpressErrorMiddlewareInterface,
+  UnauthorizedError,
 } from "routing-controllers";
 import { NextFunction, Request, Response } from "express";
 import { AppError } from "@shared";
@@ -13,6 +14,8 @@ export class GlobalErrorMiddlewares implements ExpressErrorMiddlewareInterface {
 
     if (error instanceof AppError) {
       body = { statusCode: error.error, message: error.message };
+    } else if (error instanceof UnauthorizedError) {
+      body = { statusCode: error.httpCode, message: error.message };
     } else if (
       Array.isArray(error?.errors) &&
       error.errors.some((element: any) => element instanceof ValidationError)

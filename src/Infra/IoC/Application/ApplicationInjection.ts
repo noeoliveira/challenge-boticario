@@ -7,6 +7,7 @@ import {
   IPurchaseService,
   PurchaseService,
 } from "@application/PurchaseService";
+import { AuthService, IAuthService } from "@application/AuthService";
 import { TokenIOC } from "@shared";
 
 export const applicationRegistration = (container: DependencyContainer) => {
@@ -19,4 +20,6 @@ export const applicationRegistration = (container: DependencyContainer) => {
     TokenIOC.PurchaseServiceToken,
     PurchaseService
   );
+
+  container.register<IAuthService>(TokenIOC.AuthServiceToken, AuthService);
 };

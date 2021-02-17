@@ -6,8 +6,9 @@ import {
   Body,
   HttpCode,
   OnUndefined,
+  Authorized,
 } from "routing-controllers";
-import { ResponseSchema } from "routing-controllers-openapi";
+import { OpenAPI, ResponseSchema } from "routing-controllers-openapi";
 import { container } from "tsyringe";
 
 import {
@@ -17,6 +18,14 @@ import {
 } from "@application/PurchaseService";
 import { TokenIOC } from "@shared";
 
+@OpenAPI({
+  security: [
+    {
+      Authorization: [],
+    },
+  ],
+})
+@Authorized()
 @JsonController()
 export class PurchaseController {
   public constructor(

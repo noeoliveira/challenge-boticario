@@ -6,12 +6,13 @@ import {
   Body,
   HttpCode,
   OnUndefined,
-  BadRequestError,
+  Authorized,
+  HeaderParam,
 } from "routing-controllers";
-import { ResponseSchema } from "routing-controllers-openapi";
+import { OpenAPI, ResponseSchema } from "routing-controllers-openapi";
 import { container } from "tsyringe";
 
-import { AppError, TokenIOC } from "@shared";
+import { TokenIOC } from "@shared";
 import {
   IConsultantService,
   ConsultantDTO,
@@ -33,9 +34,17 @@ export class ConsultantController {
     return this.consultantService.save(data);
   }
 
+  @OpenAPI({
+    security: [
+      {
+        Authorization: [],
+      },
+    ],
+  })
   @Get("/consultant/:cpf", { transformResponse: true })
   @OnUndefined(404)
   @ResponseSchema(ConsultantDTO)
+  @Authorized()
   public getByCpf(@Param("cpf") cpf: string) {
     return this.consultantService.findByCpf(cpf);
   }

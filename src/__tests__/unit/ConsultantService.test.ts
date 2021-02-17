@@ -6,6 +6,7 @@ import {
 import faker from "faker/locale/pt_BR";
 import cpf from "cpf";
 import { MockConsultantRepository } from "@test/mock/infra/Repository";
+import { AppError } from "@shared";
 
 describe("ConsultantService", () => {
   const consultantService: IConsultantService = new ConsultantService(
@@ -29,5 +30,9 @@ describe("ConsultantService", () => {
     const consultant = await consultantService.findByCpf(data.cpf);
 
     expect(consultant).toBeInstanceOf(ConsultantDTO || undefined);
+  });
+
+  it("should be able to duplicate consultant", async () => {
+    expect(consultantService.save(data)).rejects.toBeInstanceOf(AppError);
   });
 });

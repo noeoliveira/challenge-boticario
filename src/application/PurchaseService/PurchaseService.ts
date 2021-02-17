@@ -5,7 +5,7 @@ import {
   IPurchaseRepository,
   IStatusRepository,
 } from "@domain/Interfaces/Repository";
-import { AppError, DTOTransformers, TokenIOC } from "@shared";
+import { AppError, DTOTransformers, Errors, TokenIOC, Utils } from "@shared";
 import { PurchaseInput } from "./input/purchase.input";
 import { IPurchaseService } from "./Interfaces/IPurchaseService";
 import { PurchaseDTO } from "./output/purchase.output";
@@ -22,15 +22,14 @@ export class PurchaseService implements IPurchaseService {
   ) {}
 
   async save({ id_consultant, ...rest }: PurchaseInput): Promise<PurchaseDTO> {
+    const cpf = Utils.formartCPFToNumber(id_consultant);
     const [consultant, status] = await Promise.all([
-      this.consultantRepository.findByCpf(id_consultant),
-      this.statusRepository.findById(
-        id_consultant === "15350946056" ? "2" : "1"
-      ),
+      this.consultantRepository.findByCpf(cpf),
+      this.statusRepository.findById(cpf === "15350946056" ? "2" : "1"),
     ]);
 
     if (!consultant || !status) {
-      throw new AppError("Consultant not exists");
+      throw new AppError("Consultant not exists", Errors.NOT_FOUND);
     }
 
     let cashbackPercentage;

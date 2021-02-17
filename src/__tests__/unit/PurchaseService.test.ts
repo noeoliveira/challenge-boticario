@@ -7,6 +7,7 @@ import {
 import faker from "faker";
 import cpf from "cpf";
 import { PurchaseDTO, PurchaseService } from "@application/PurchaseService";
+import { AppError } from "@shared";
 
 faker.setLocale("pt_BR");
 
@@ -21,7 +22,7 @@ describe("PurchaseService", () => {
   );
 
   const dataConsultant = {
-    cpf: cpf.generate(true),
+    cpf: cpf.generate(false),
     email: faker.internet.email(),
     name: `${faker.name.firstName()} ${faker.name.middleName()} ${faker.name.lastName()}`,
     password: faker.internet.password(8),
@@ -53,5 +54,9 @@ describe("PurchaseService", () => {
     );
 
     expect(purchase).toBeInstanceOf(PurchaseDTO || undefined);
+  });
+
+  it("should be able to duplicate code purchase", async () => {
+    expect(purchaseService.save(dataPurchase)).rejects.toBeInstanceOf(AppError);
   });
 });
