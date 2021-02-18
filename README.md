@@ -1,6 +1,6 @@
 # Challenge - O Boticário -BackEnd <a id="comeco" />
 
-[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=noeoliveira_projeto-grupo-boticario&metric=alert_status)](https://sonarcloud.io/dashboard?id=noeoliveira_projeto-grupo-boticario) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=noeoliveira_projeto-grupo-boticario&metric=coverage)](https://sonarcloud.io/dashboard?id=noeoliveira_projeto-grupo-boticario)
+[![Build Status](https://travis-ci.com/noeoliveira/challenge-boticario.svg?branch=master)](https://travis-ci.com/noeoliveira/challenge-boticario) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=noeoliveira_projeto-grupo-boticario&metric=alert_status)](https://sonarcloud.io/dashboard?id=noeoliveira_projeto-grupo-boticario) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=noeoliveira_projeto-grupo-boticario&metric=coverage)](https://sonarcloud.io/dashboard?id=noeoliveira_projeto-grupo-boticario)
 
 - Autor: Noé Oliveira
 - Desafio: “Eu revendedor `O Boticário` quero ter benefícios de acordo com o volume de vendas”.
