@@ -80,9 +80,12 @@ describe("PurchaseService", () => {
   });
 
   it("should be able to delete purchase by Code", async () => {
-    expect(purchaseService.delete(dataPurchase.code_purchase)).resolves.toBe(
-      undefined
+    const purchaseDeleted = await purchaseService.delete(
+      dataPurchase.code_purchase
     );
+
+    expect(Array.isArray(purchaseDeleted)).toBe(true);
+
     expect(
       purchaseService.delete(faker.random.alphaNumeric(6))
     ).rejects.toBeInstanceOf(AppError);

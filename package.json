@@ -28,6 +28,7 @@
     "typescript": "^4.1.5"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "brazilian-values": "^0.10.1",
     "class-transformer": "0.3.1",

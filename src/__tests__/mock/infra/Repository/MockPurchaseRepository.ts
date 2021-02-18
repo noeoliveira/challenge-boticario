@@ -54,16 +54,16 @@ export class MockPurchaseRepository implements IPurchaseRepository {
     return newPurchase;
   }
 
-  async delete(code: string): Promise<{ affected?: number | null }> {
-    let affected: any;
+  async delete(code: string): Promise<IPurchase[]> {
+    const result: IPurchase[] = [];
     this.repository = this.repository.filter((item) => {
       if (item.code_purchase !== code) {
         return true;
       }
-      affected = Number(affected || 0) + 1;
+      result.push(item);
       return false;
     });
 
-    return { affected };
+    return result;
   }
 }

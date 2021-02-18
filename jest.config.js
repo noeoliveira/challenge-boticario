@@ -4,9 +4,13 @@ const { compilerOptions } = require("./tsconfig.json");
 module.exports = {
   clearMocks: true,
 
-  collectCoverage: true,
+  coveragePathIgnorePatterns: [
+    "node_modules",
+    "__tests__",
+    "database/migration",
+  ],
 
-  // collectCoverageFrom: ["<rootDir>/src/application/**/*.ts"],
+  collectCoverage: true,
 
   coverageDirectory: "coverage",
 

@@ -21,7 +21,7 @@ const dataAdmin = {
   cpf: "153.509.460-56",
   email: "admin@admin.com.br",
   name: `${faker.name.firstName()} ${faker.name.middleName()} ${faker.name.lastName()}`,
-  password: "12345678",
+  password: "@Test123",
 };
 
 let token: string;
@@ -32,6 +32,15 @@ describe("Consultant routers", () => {
 
     await api.post("/api/consultant").send(dataAdmin).expect(201);
     await api.post("/api/consultant").send(data).expect(400);
+    await api
+      .post("/api/consultant")
+      .send({
+        cpf: faker.random.number({ min: 10000000000, precision: 0 }),
+        email: faker.internet.email(),
+        name: `${faker.name.firstName()} ${faker.name.middleName()} ${faker.name.lastName()}`,
+        password: faker.internet.password(8),
+      })
+      .expect(400);
   });
 
   it("should be able to authenticate consultant", async () => {
@@ -142,6 +151,15 @@ describe("Purchase routers", () => {
 
     expect(response.status).toBe(200);
     expect(Array.isArray(response.body)).toBe(true);
+  });
+
+  it("should be able to get cashback", async () => {
+    await api.get(`/api/cashback?cpf=${data.cpf}`).expect(401);
+
+    await api
+      .get(`/api/cashback?cpf=${data.cpf}`)
+      .set({ Authorization: token })
+      .expect(200);
   });
 
   it("should be able to update purchases", async () => {

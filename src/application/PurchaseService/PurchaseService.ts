@@ -5,10 +5,19 @@ import {
   IPurchaseRepository,
   IStatusRepository,
 } from "@domain/Interfaces/Repository";
-import { AppError, DTOTransformers, Errors, TokenIOC, Utils } from "@shared";
+import {
+  AppError,
+  DTOTransformers,
+  env,
+  Errors,
+  TokenIOC,
+  Utils,
+} from "@shared";
 import { PurchaseInput } from "./input/purchase.input";
 import { IPurchaseService } from "./Interfaces/IPurchaseService";
 import { PurchaseDTO } from "./output/purchase.output";
+import { CashBackDTO } from "./output/cashback.output";
+import axios from "axios";
 
 @injectable()
 export class PurchaseService implements IPurchaseService {
@@ -149,5 +158,36 @@ export class PurchaseService implements IPurchaseService {
       throw new AppError("Purchase not deleted");
     }
     return DTOTransformers(purchaseDeleted, PurchaseDTO);
+  }
+
+  async cashback(cpf: string): Promise<CashBackDTO> {
+    if (!cpf) {
+      throw new Error("CPF is required");
+    }
+
+    const purchases = await this.purchaseRepository.findAll(
+      Utils.formartCPFToNumber(cpf)
+    );
+
+    interface ICreditExternal {
+      statusCode: number;
+      body: {
+        credit: number;
+      };
+    }
+
+    const creditExternal = await axios
+      .get<ICreditExternal>(`${env.API_CREDIT_EXTERNAL}/cashback`, {
+        params: { cpf: Utils.formartCPFToNumber(cpf) },
+        headers: { token: "ZXPURQOARHiMc6Y0flhRC1LVlZQVFRnm" },
+      })
+      .then((resp) => resp.data);
+
+    const cashback = purchases.reduce(
+      (prev, current) => prev + current.cashback_value,
+      creditExternal.body.credit
+    );
+
+    return DTOTransformers({ cashback }, CashBackDTO);
   }
 }
