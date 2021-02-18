@@ -8,8 +8,9 @@ module.exports = {
     "node_modules",
     "__tests__",
     "database/migration",
+    "<rootDir>/dist",
   ],
-
+  modulePathIgnorePatterns: ["<rootDir>/dist"],
   collectCoverage: true,
 
   coverageDirectory: "coverage",
