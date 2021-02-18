@@ -20,6 +20,8 @@ module.exports = {
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
     prefix: "<rootDir>/src",
   }),
+  roots: ["<rootDir>"],
+  modulePaths: ["<rootDir>"],
 
   preset: "ts-jest",
 
