@@ -1,8 +1,8 @@
+import { IConsultantRepository, IConsultant } from "@domain/Interfaces";
+import { ConsultantEntity } from "@infra/database/entity/ConsultantEntity";
+import { AppError } from "@shared";
 import { injectable } from "tsyringe";
 import { getRepository, Repository } from "typeorm";
-import { IConsultant } from "../../domain/Interfaces/Entity/IConsultant";
-import { IConsultantRepository } from "../../domain/Interfaces/Repository/IConsultantRepository";
-import { ConsultantEntity } from "../database/entity/ConsultantEntity";
 
 @injectable()
 export class ConsultantRepository implements IConsultantRepository {
@@ -12,9 +12,11 @@ export class ConsultantRepository implements IConsultantRepository {
   }
 
   async save(data: IConsultant): Promise<IConsultant> {
-    const consultant = await this.repository.findOne(data.cpf);
+    const consultant = await this.repository.findOne({
+      where: [{ cpf: data.cpf }, { email: data.email }],
+    });
     if (consultant) {
-      throw new Error("teste");
+      throw new AppError("Email or CPF already exists");
     }
     const consultantCreate = this.repository.create(data);
     return this.repository.save(consultantCreate);

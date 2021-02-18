@@ -1,21 +1,35 @@
-import { injectable, inject } from "tsyringe";
-import { Consultant } from "../../domain/Entity/Consultant";
-import { IConsultant } from "../../domain/Interfaces/Entity";
-import { IConsultantRepository } from "../../domain/Interfaces/Repository/IConsultantRepository";
+import { Consultant } from "@domain/Entity";
+import { IConsultantRepository } from "@domain/Interfaces";
+import { DTOTransformers, TokenIOC, Utils } from "@shared";
+import { ConsultantInput } from "./input/consultant.input";
 import { IConsultantService } from "./Interfaces/IConsultantService";
+import { ConsultantDTO } from "./output/consultant.output";
+import { injectable, inject } from "tsyringe";
 
 @injectable()
 export class ConsultantService implements IConsultantService {
   constructor(
-    @inject("ConsultantRepository")
+    @inject(TokenIOC.ConsultantRepositoryToken)
     private consultantRepository: IConsultantRepository
   ) {}
 
-  save(data: IConsultant): Promise<IConsultant> {
-    const consultant = new Consultant(data);
-    return this.consultantRepository.save(consultant);
+  async save({ cpf, ...rest }: ConsultantInput): Promise<ConsultantDTO> {
+    const formatedCpf = Utils.formartCPFToNumber(cpf);
+    const consultant = new Consultant({
+      ...rest,
+      cpf: formatedCpf,
+    });
+
+    return DTOTransformers(
+      await this.consultantRepository.save(consultant),
+      ConsultantDTO
+    );
   }
-  findByCpf(cpf: string): Promise<IConsultant | undefined> {
-    return this.consultantRepository.findByCpf(cpf);
+
+  async findByCpf(cpf: string): Promise<ConsultantDTO | undefined> {
+    return DTOTransformers(
+      await this.consultantRepository.findByCpf(Utils.formartCPFToNumber(cpf)),
+      ConsultantDTO
+    );
   }
 }
