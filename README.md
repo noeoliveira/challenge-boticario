@@ -47,14 +47,14 @@ O revendedor, após se registrar, terá seu cashback cadastrado em meu sistema s
 
 ## Libs <a id="libs" />
 
-- [Express] - Estrutura da web minimalista, rápida e sem opinião para Node.js.
+- [Express](https://expressjs.com/) - Estrutura da web minimalista, rápida e sem opinião para Node.js.
 - [routing-controllers](https://github.com/typestack/routing-controllers) - Permite criar classes de controllers com métodos como ações que tratam de solicitações. Você pode usar `routing-controllers` com express.js ou koa.js .
 - [swagger-ui-express](https://github.com/scottie1984/swagger-ui-express) - Adiciona middleware ao seu aplicativo Express para servir a Swagger UI vinculada ao seu documento Swagger.
 - [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken#readme) - **JWT** (JSON Web Token) é um sistema de transferência de dados que pode ser enviado via POST ou em um cabeçalho HTTP (header)
 - [Passaport](http://www.passportjs.org/) - Passaport é middleware de autenticação para Node.js . Extremamente flexível e modular, o Passport pode ser inserido em qualquer aplicativo da web baseado no Express de forma discreta .
 - [TypeORM](https://typeorm.io) - é um ORM que pode ser utilizado em plataformas como o Node, Ionic, dentre outras, e que possibilita o desenvolvimento tanto com JavaScript como com TypeScript.
 - [TSyringe](https://github.com/microsoft/tsyringe) - Recipiente de injeção de dependência leve para JavaScript / TypeScript
-- [Node.js] - é um runtime de JavaScript construído no motor V8 JavaScript do Chrome .
+- [Node.js](https://nodejs.org/pt-br/) - é um runtime de JavaScript construído no motor V8 JavaScript do Chrome .
 
 ## Instalação <a id="instalacao" />
 
@@ -64,7 +64,7 @@ Instale as dependências e dependências de desenvolvimento e inicie o servidor.
 
 > **Importante! Verifique [aqui](.env.example) seu arquivo `.env` para a configuração de variáveis de ambiente estão devidamente configurado antes de continuar!**
 
-# `Por usar como base o SQLite não é necessário criar nenhuma instância de DB`
+#### `Por usar como base o SQLite não é necessário criar nenhuma instância de DB`
 
 ```bash
 npm install
