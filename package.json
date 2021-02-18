@@ -56,9 +56,9 @@
     "build": "tsc --project tsconfig.json && tscpaths -p tsconfig.json -s ./ -o ./dist",
     "dev": "ts-node-dev -r tsconfig-paths/register --inspect --respawn --transpile-only src/startup.ts",
     "typeorm": "ts-node node_modules/typeorm/cli.js",
-    "test": "jest",
-    "test:unit": "jest --testPathPattern=test.[tj]s",
-    "test:integration": "jest --testPathPattern=spec.[tj]s"
+    "test": "ts-node ./node_modules/jest/bin/jest.js",
+    "test:unit": "ts-node ./node_modules/jest/bin/jest.js --testPathPattern=test.[tj]s",
+    "test:integration": "ts-node ./node_modules/jest/bin/jest.js --testPathPattern=spec.[tj]s"
   },
   "jest": {
     "rootDir": "./"
