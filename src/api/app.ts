@@ -96,7 +96,7 @@ class App {
           version: "1.0.0",
           contact: {
             name: "Noé Oliveira",
-            url: "https://github.com/noeoliveira/projeto-grupo-boticario",
+            url: "https://github.com/noeoliveira/challenge-boticario",
           },
         },
       }
