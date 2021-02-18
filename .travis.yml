@@ -7,6 +7,8 @@ env:
   - API_CREDIT_EXTERNAL=https://mdaqk8ek5j.execute-api.us-east-1.amazonaws.com/v1/
   - JWT_SECRET=teste
   - JWT_EXPIRE=5m
+before_install:
+  - "npm install -g typescript"
 install:
   - npm install
 script:
