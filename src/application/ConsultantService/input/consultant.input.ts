@@ -1,4 +1,4 @@
-import { IsEmail, IsString, Matches, MinLength } from "class-validator";
+import { IsEmail, IsString, MinLength } from "class-validator";
 import { IConsultant } from "@domain/Interfaces";
 import { IsCPF } from "@shared";
 

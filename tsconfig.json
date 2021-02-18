@@ -4,6 +4,7 @@
     "module": "commonjs",
     "allowJs": true,
     "sourceMap": true,
+    "outDir": "./dist",
     "rootDir": "./",
 
     "strict": true,
@@ -33,5 +34,6 @@
 
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
-  }
+  },
+  "exclude": ["node_modules", "coverage", "__tests__", "jest.*"]
 }
