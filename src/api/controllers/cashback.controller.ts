@@ -1,5 +1,3 @@
-import { IPurchaseService, PurchaseDTO } from "@application/PurchaseService";
-import { TokenIOC } from "@shared";
 import {
   Authorized,
   Get,
@@ -9,6 +7,8 @@ import {
 } from "routing-controllers";
 import { OpenAPI, ResponseSchema } from "routing-controllers-openapi";
 import { container } from "tsyringe";
+import { IPurchaseService, PurchaseDTO } from "../../application/PurchaseService";
+import { TokenIOC } from "../../shared";
 
 @OpenAPI({
   security: [

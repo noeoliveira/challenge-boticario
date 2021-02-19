@@ -1,9 +1,12 @@
 import { Post, JsonController, Body, HttpCode } from "routing-controllers";
 import { ResponseSchema } from "routing-controllers-openapi";
 import { container } from "tsyringe";
-
-import { TokenIOC } from "@shared";
-import { IAuthService, SingInDTO, SingInInput } from "@application/AuthService";
+import {
+  IAuthService,
+  SingInDTO,
+  SingInInput,
+} from "../../application/AuthService";
+import { TokenIOC } from "../../shared";
 
 @JsonController()
 export class AuthController {

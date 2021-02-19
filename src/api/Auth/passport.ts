@@ -1,8 +1,8 @@
-import { IConsultantService } from "@application/ConsultantService";
-import { env, TokenIOC } from "@shared";
 import passport from "passport";
 import { Strategy as JwtStrategy, ExtractJwt } from "passport-jwt";
 import { container } from "tsyringe";
+import { IConsultantService } from "../../application/ConsultantService";
+import { env, TokenIOC } from "../../shared";
 
 const opts = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),

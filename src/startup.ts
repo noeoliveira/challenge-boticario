@@ -2,9 +2,9 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import "reflect-metadata";
-import "@infra/IoC/RootInjectionDependency";
-import app from "@api/app";
-import { env } from "@shared";
+import "./infra/IoC/RootInjectionDependency";
+import app from "./api/app";
+import { env } from "./shared";
 import { connectDatabase } from "./connectDatabase";
 
 async function main() {

@@ -1,6 +1,6 @@
-import { ConsultantDTO } from "@application/ConsultantService";
 import { Type } from "class-transformer";
 import { ValidateNested, IsJWT } from "class-validator";
+import { ConsultantDTO } from "../../ConsultantService";
 
 export class SingInDTO {
   constructor(data: Partial<SingInDTO>) {

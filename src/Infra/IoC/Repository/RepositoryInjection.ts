@@ -3,13 +3,13 @@ import {
   IConsultantRepository,
   IPurchaseRepository,
   IStatusRepository,
-} from "@domain/Interfaces/Repository";
-import { TokenIOC } from "@shared";
+} from "../../../domain/Interfaces";
+import { TokenIOC } from "../../../shared";
 import {
   ConsultantRepository,
   PurchaseRepository,
   StatusRepository,
-} from "@infra/Repository";
+} from "../../Repository";
 
 export const repositoryRegistration = (container: DependencyContainer) => {
   container.register<IConsultantRepository>(

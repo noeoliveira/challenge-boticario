@@ -1,23 +1,23 @@
 import { injectable, inject } from "tsyringe";
-import { Purchase } from "@domain/Entity";
-import {
-  IConsultantRepository,
-  IPurchaseRepository,
-  IStatusRepository,
-} from "@domain/Interfaces/Repository";
-import {
-  AppError,
-  DTOTransformers,
-  env,
-  Errors,
-  TokenIOC,
-  Utils,
-} from "@shared";
 import { PurchaseInput } from "./input/purchase.input";
 import { IPurchaseService } from "./Interfaces/IPurchaseService";
 import { PurchaseDTO } from "./output/purchase.output";
 import { CashBackDTO } from "./output/cashback.output";
 import axios from "axios";
+import { Purchase } from "../../domain/Entity";
+import {
+  IPurchaseRepository,
+  IConsultantRepository,
+  IStatusRepository,
+} from "../../domain/Interfaces";
+import {
+  TokenIOC,
+  Utils,
+  AppError,
+  Errors,
+  DTOTransformers,
+  env,
+} from "../../shared";
 
 @injectable()
 export class PurchaseService implements IPurchaseService {

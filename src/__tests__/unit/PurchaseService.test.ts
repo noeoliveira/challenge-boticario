@@ -1,12 +1,15 @@
-import {
-  MockConsultantRepository,
-  MockPurchaseRepository,
-  MockStatusRepository,
-} from "@test/mock/infra/Repository";
 import faker from "faker";
 import cpf from "cpf";
-import { PurchaseDTO, PurchaseService } from "@application/PurchaseService";
-import { AppError } from "@shared";
+import {
+  PurchaseService,
+  PurchaseDTO,
+} from "../../application/PurchaseService";
+import { AppError } from "../../shared";
+import {
+  MockPurchaseRepository,
+  MockConsultantRepository,
+  MockStatusRepository,
+} from "../mock/infra/Repository";
 
 faker.setLocale("pt_BR");
 

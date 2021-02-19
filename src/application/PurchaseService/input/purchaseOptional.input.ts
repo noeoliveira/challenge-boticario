@@ -5,8 +5,8 @@ import {
   IsDate,
   IsOptional,
 } from "class-validator";
-import { IPurchase } from "@domain/Interfaces";
 import { Type } from "class-transformer";
+import { IPurchase } from "../../../domain/Interfaces";
 
 export class PurchaseInput
   implements

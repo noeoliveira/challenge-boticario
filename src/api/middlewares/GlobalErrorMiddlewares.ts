@@ -4,8 +4,8 @@ import {
   UnauthorizedError,
 } from "routing-controllers";
 import { NextFunction, Request, Response } from "express";
-import { AppError } from "@shared";
 import { ValidationError } from "class-validator";
+import { AppError } from "../../shared/Exceptions/AppError";
 
 @Middleware({ type: "after" })
 export class GlobalErrorMiddlewares implements ExpressErrorMiddlewareInterface {

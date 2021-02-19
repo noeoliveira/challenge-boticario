@@ -1,13 +1,17 @@
-import {
-  ConsultantDTO,
-  ConsultantService,
-  IConsultantService,
-} from "@application/ConsultantService";
-import { AuthService, IAuthService, SingInDTO } from "@application/AuthService";
 import faker from "faker/locale/pt_BR";
 import cpf from "cpf";
-import { MockConsultantRepository } from "@test/mock/infra/Repository";
-import { AppError } from "@shared";
+import {
+  IAuthService,
+  AuthService,
+  SingInDTO,
+} from "../../application/AuthService";
+import {
+  IConsultantService,
+  ConsultantService,
+  ConsultantDTO,
+} from "../../application/ConsultantService";
+import { AppError } from "../../shared";
+import { MockConsultantRepository } from "../mock/infra/Repository";
 
 describe("AuthService", () => {
   const consultantRepository = new MockConsultantRepository();

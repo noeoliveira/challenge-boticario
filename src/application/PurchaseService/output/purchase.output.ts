@@ -1,5 +1,3 @@
-import { ConsultantDTO } from "@application/ConsultantService";
-import { IStatus, IPurchase } from "@domain/Interfaces";
 import { Exclude, Type } from "class-transformer";
 import {
   IsString,
@@ -9,6 +7,8 @@ import {
   IsOptional,
   IsDate,
 } from "class-validator";
+import { IStatus, IPurchase } from "../../../domain/Interfaces";
+import { ConsultantDTO } from "../../ConsultantService";
 
 class StatusDTO implements IStatus {
   constructor(data: Partial<IStatus>) {

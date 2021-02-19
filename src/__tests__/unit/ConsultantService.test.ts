@@ -1,12 +1,12 @@
-import {
-  ConsultantDTO,
-  ConsultantService,
-  IConsultantService,
-} from "@application/ConsultantService";
 import faker from "faker/locale/pt_BR";
 import cpf from "cpf";
-import { MockConsultantRepository } from "@test/mock/infra/Repository";
-import { AppError } from "@shared";
+import {
+  IConsultantService,
+  ConsultantService,
+  ConsultantDTO,
+} from "../../application/ConsultantService";
+import { AppError } from "../../shared";
+import { MockConsultantRepository } from "../mock/infra/Repository";
 
 describe("ConsultantService", () => {
   const consultantService: IConsultantService = new ConsultantService(

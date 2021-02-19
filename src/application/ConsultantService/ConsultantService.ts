@@ -1,10 +1,10 @@
-import { Consultant } from "@domain/Entity";
-import { IConsultantRepository } from "@domain/Interfaces";
-import { DTOTransformers, TokenIOC, Utils } from "@shared";
 import { ConsultantInput } from "./input/consultant.input";
 import { IConsultantService } from "./Interfaces/IConsultantService";
 import { ConsultantDTO } from "./output/consultant.output";
 import { injectable, inject } from "tsyringe";
+import { Consultant } from "../../domain/Entity";
+import { IConsultantRepository } from "../../domain/Interfaces";
+import { TokenIOC, Utils, DTOTransformers } from "../../shared";
 
 @injectable()
 export class ConsultantService implements IConsultantService {

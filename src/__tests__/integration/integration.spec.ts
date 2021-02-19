@@ -1,8 +1,9 @@
 import faker from "faker/locale/pt_BR";
 import cpf from "cpf";
 import supertest from "supertest";
-import app from "@api/app";
-import { connectDatabase } from "@root/connectDatabase";
+import app from "../../api/app";
+import { connectDatabase } from "../../connectDatabase";
+
 let api: supertest.SuperTest<supertest.Test>;
 
 beforeAll(async () => {
