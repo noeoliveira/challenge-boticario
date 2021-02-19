@@ -1,6 +1,9 @@
-import { IConsultantRepository, IConsultant } from "@domain/Interfaces";
-import { ConsultantEntity } from "@infra/database/entity/ConsultantEntity";
-import { AppError } from "@shared";
+import {
+  IConsultantRepository,
+  IConsultant,
+} from "../../../../domain/Interfaces";
+import { ConsultantEntity } from "../../../../infra/database/entity/ConsultantEntity";
+import { AppError } from "../../../../shared";
 
 export class MockConsultantRepository implements IConsultantRepository {
   private repository: ConsultantEntity[] = [];

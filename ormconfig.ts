@@ -1,6 +1,6 @@
 import { ConnectionOptions } from "typeorm";
 import { join } from "path";
-import { env } from "@shared";
+import { env } from "./src/shared";
 
 const config: ConnectionOptions = {
   type: "sqlite",

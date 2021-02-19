@@ -1,16 +1,16 @@
-import { Consultant } from "@domain/Entity";
-import { IConsultantRepository } from "@domain/Interfaces";
-import {
-  AppError,
-  DTOTransformers,
-  env,
-  Errors,
-  TokenIOC,
-  Utils,
-} from "@shared";
 import { injectable, inject } from "tsyringe";
 import jwt from "jsonwebtoken";
 import { IAuthService, SingInInput, SingInDTO } from ".";
+import { Consultant } from "../../domain/Entity";
+import { IConsultantRepository } from "../../domain/Interfaces";
+import {
+  TokenIOC,
+  Utils,
+  AppError,
+  Errors,
+  DTOTransformers,
+  env,
+} from "../../shared";
 
 @injectable()
 export class AuthService implements IAuthService {

@@ -1,4 +1,4 @@
-import { IStatus } from "@domain/Interfaces";
+import { IStatus } from "../Interfaces";
 
 export class Status implements Omit<IStatus, "id"> {
   constructor(data: Partial<Omit<IStatus, "id">>) {

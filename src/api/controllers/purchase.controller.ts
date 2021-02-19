@@ -13,14 +13,13 @@ import {
 } from "routing-controllers";
 import { OpenAPI, ResponseSchema } from "routing-controllers-openapi";
 import { container } from "tsyringe";
-
 import {
   IPurchaseService,
   PurchaseDTO,
   PurchaseInput,
   PurchaseInputOptional,
-} from "@application/PurchaseService";
-import { TokenIOC } from "@shared";
+} from "../../application/PurchaseService";
+import { TokenIOC } from "../../shared";
 
 @OpenAPI({
   security: [

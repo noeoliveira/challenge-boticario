@@ -1,6 +1,5 @@
-import { IPurchase } from "@domain/Interfaces";
-
 import { Consultant, Status } from ".";
+import { IPurchase } from "../Interfaces";
 
 export class Purchase implements IPurchase {
   constructor(data: IPurchase) {

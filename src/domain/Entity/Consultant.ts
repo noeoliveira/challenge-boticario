@@ -1,6 +1,6 @@
-import { IConsultant } from "@domain/Interfaces";
 import { hashSync, compareSync } from "bcryptjs";
 import { Purchase } from ".";
+import { IConsultant } from "../Interfaces";
 
 export class Consultant implements IConsultant {
   constructor({ password, ...rest }: IConsultant) {

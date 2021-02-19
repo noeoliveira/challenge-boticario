@@ -1,6 +1,6 @@
 import { IsEmail, IsString, MinLength } from "class-validator";
-import { IConsultant } from "@domain/Interfaces";
-import { IsCPF } from "@shared";
+import { IConsultant } from "../../../domain/Interfaces";
+import { IsCPF } from "../../../shared";
 
 export class ConsultantInput implements Omit<IConsultant, "purchases"> {
   @IsCPF()

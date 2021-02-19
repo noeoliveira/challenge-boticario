@@ -1,5 +1,5 @@
-import { IStatusRepository, IStatus } from "@domain/Interfaces";
-import { StatusEntity } from "@infra/database/entity/StatusEntity";
+import { IStatusRepository, IStatus } from "../../../../domain/Interfaces";
+import { StatusEntity } from "../../../../infra/database/entity/StatusEntity";
 
 export class MockStatusRepository implements IStatusRepository {
   private repository: StatusEntity[] = [

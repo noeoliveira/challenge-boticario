@@ -1,5 +1,5 @@
 import { IsString } from "class-validator";
-import { IsCPF } from "@shared";
+import { IsCPF } from "../../../shared";
 
 export class SingInInput {
   @IsCPF()

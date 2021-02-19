@@ -10,23 +10,7 @@
     "strict": true,
 
     "moduleResolution": "node",
-    "baseUrl": "./src",
-    "paths": {
-      "@api": ["api/"],
-      "@api/*": ["api/*"],
-      "@application": ["application/"],
-      "@application/*": ["application/*"],
-      "@domain": ["domain/"],
-      "@domain/*": ["domain/*"],
-      "@infra": ["infra/"],
-      "@infra/*": ["infra/*"],
-      "@shared": ["shared/"],
-      "@shared/*": ["shared/*"],
-      "@test": ["__tests__/"],
-      "@test/*": ["__tests__/*"],
-      "@root": ["./"],
-      "@root/*": ["./*"]
-    },
+
     "esModuleInterop": true,
 
     "experimentalDecorators": true,
