@@ -2,7 +2,7 @@ import {
   IConsultantRepository,
   IConsultant,
 } from "../../../../domain/Interfaces";
-import { ConsultantEntity } from "../../../../infra/database/entity/ConsultantEntity";
+import { ConsultantEntity } from "../../../../infrastructure/database/entity/ConsultantEntity";
 import { AppError } from "../../../../shared";
 
 export class MockConsultantRepository implements IConsultantRepository {
