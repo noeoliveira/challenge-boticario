@@ -1,0 +1,9 @@
+language: node_js
+node_js:
+  - 12
+env:
+  - SERVER_PORT=3000 NODE_ENV=test API_CREDIT_EXTERNAL=https://mdaqk8ek5j.execute-api.us-east-1.amazonaws.com/v1/ JWT_SECRET=teste JWT_EXPIRE=5m
+install:
+  - npm install
+script:
+  - npm run test
