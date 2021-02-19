@@ -58,7 +58,7 @@ O revendedor, após se registrar, terá seu cashback cadastrado em meu sistema s
 
 ## Instalação <a id="instalacao" />
 
-O projeto foi construído sobre [Node.js](https://nodejs.org/) LTS.
+O projeto foi construído sobre [Node.js](https://nodejs.org/) v12+.
 
 Instale as dependências e dependências de desenvolvimento e inicie o servidor.
 
