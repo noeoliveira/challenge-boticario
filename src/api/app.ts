@@ -8,7 +8,6 @@ import {
 import * as swaggerUiExpress from "swagger-ui-express";
 import { routingControllersToSpec } from "routing-controllers-openapi";
 import { validationMetadatasToSchemas } from "class-validator-jsonschema";
-import { defaultMetadataStorage } from "class-transformer/storage";
 import compression from "compression";
 import helmet from "helmet";
 import cors from "cors";
@@ -69,7 +68,6 @@ class App {
 
   private addSwagger() {
     const schemas = validationMetadatasToSchemas({
-      classTransformerMetadataStorage: defaultMetadataStorage,
       refPointerPrefix: "#/components/schemas/",
       skipNullProperties: true,
     });
