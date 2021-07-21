@@ -7,7 +7,10 @@ import {
 } from "routing-controllers";
 import { OpenAPI, ResponseSchema } from "routing-controllers-openapi";
 import { container } from "tsyringe";
-import { IPurchaseService, PurchaseDTO } from "../../application/PurchaseService";
+import {
+  IPurchaseService,
+  CashBackDTO,
+} from "../../application/PurchaseService";
 import { TokenIOC } from "../../shared";
 
 @OpenAPI({
@@ -28,7 +31,7 @@ export class CashBackController {
 
   @Get("/cashback", { transformResponse: true })
   @OnUndefined(404)
-  @ResponseSchema(PurchaseDTO)
+  @ResponseSchema(CashBackDTO)
   public AllGetCashback(@QueryParam("cpf") cpf: string) {
     return this.purchaseService.cashback(cpf);
   }

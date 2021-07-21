@@ -3,14 +3,8 @@ import jwt from "jsonwebtoken";
 import { IAuthService, SingInInput, SingInDTO } from ".";
 import { Consultant } from "../../domain/Entity";
 import { IConsultantRepository } from "../../domain/Interfaces";
-import {
-  TokenIOC,
-  Utils,
-  AppError,
-  Errors,
-  DTOTransformers,
-  env,
-} from "../../shared";
+import { TokenIOC, Utils, AppError, Errors, env } from "../../shared";
+import { plainToClass } from "class-transformer";
 
 @injectable()
 export class AuthService implements IAuthService {
@@ -35,6 +29,6 @@ export class AuthService implements IAuthService {
       expiresIn: env.JWT_EXPIRE,
     });
 
-    return DTOTransformers({ token, consultant }, SingInDTO);
+    return plainToClass(SingInDTO, { token, consultant });
   }
 }

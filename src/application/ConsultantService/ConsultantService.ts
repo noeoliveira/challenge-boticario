@@ -4,7 +4,8 @@ import { ConsultantDTO } from "./output/consultant.output";
 import { injectable, inject } from "tsyringe";
 import { Consultant } from "../../domain/Entity";
 import { IConsultantRepository } from "../../domain/Interfaces";
-import { TokenIOC, Utils, DTOTransformers } from "../../shared";
+import { TokenIOC, Utils } from "../../shared";
+import { plainToClass } from "class-transformer";
 
 @injectable()
 export class ConsultantService implements IConsultantService {
@@ -20,16 +21,16 @@ export class ConsultantService implements IConsultantService {
       cpf: formatedCpf,
     });
 
-    return DTOTransformers(
-      await this.consultantRepository.save(consultant),
-      ConsultantDTO
+    return plainToClass(
+      ConsultantDTO,
+      await this.consultantRepository.save(consultant)
     );
   }
 
   async findByCpf(cpf: string): Promise<ConsultantDTO | undefined> {
-    return DTOTransformers(
-      await this.consultantRepository.findByCpf(Utils.formartCPFToNumber(cpf)),
-      ConsultantDTO
+    return plainToClass(
+      ConsultantDTO,
+      await this.consultantRepository.findByCpf(Utils.formartCPFToNumber(cpf))
     );
   }
 }

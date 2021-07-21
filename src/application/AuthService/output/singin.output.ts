@@ -11,6 +11,6 @@ export class SingInDTO {
   token!: string;
 
   @Type(() => ConsultantDTO)
-  @ValidateNested({ each: true })
+  @ValidateNested()
   consultant!: ConsultantDTO;
 }

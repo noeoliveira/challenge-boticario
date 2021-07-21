@@ -8,6 +8,8 @@ import {
 import * as swaggerUiExpress from "swagger-ui-express";
 import { routingControllersToSpec } from "routing-controllers-openapi";
 import { validationMetadatasToSchemas } from "class-validator-jsonschema";
+
+import { defaultMetadataStorage } from "class-transformer/cjs/storage";
 import compression from "compression";
 import helmet from "helmet";
 import cors from "cors";
@@ -17,10 +19,10 @@ import { middlewares } from "./middlewares";
 
 import { PassportAuth } from "./Auth/passport";
 import { PassportStatic } from "passport";
-class App {
+class AppExpress {
   private expressApp!: Application;
   private passport!: PassportStatic;
-  public server!: Application;
+  private server!: Application;
 
   private readonly routingControllersOptions: RoutingControllersOptions = {
     routePrefix: "/api",
@@ -70,6 +72,7 @@ class App {
     const schemas = validationMetadatasToSchemas({
       refPointerPrefix: "#/components/schemas/",
       skipNullProperties: true,
+      classTransformerMetadataStorage: defaultMetadataStorage,
     });
 
     const spec = routingControllersToSpec(
@@ -108,4 +111,4 @@ class App {
   }
 }
 
-export default new App();
+export default new AppExpress();

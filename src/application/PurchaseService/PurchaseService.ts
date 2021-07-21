@@ -10,14 +10,8 @@ import {
   IConsultantRepository,
   IStatusRepository,
 } from "../../domain/Interfaces";
-import {
-  TokenIOC,
-  Utils,
-  AppError,
-  Errors,
-  DTOTransformers,
-  env,
-} from "../../shared";
+import { TokenIOC, Utils, AppError, Errors, env } from "../../shared";
+import { plainToClass } from "class-transformer";
 
 @injectable()
 export class PurchaseService implements IPurchaseService {
@@ -67,23 +61,23 @@ export class PurchaseService implements IPurchaseService {
       status,
     });
 
-    return DTOTransformers(
-      await this.purchaseRepository.save(purchase),
-      PurchaseDTO
+    return plainToClass(
+      PurchaseDTO,
+      await this.purchaseRepository.save(purchase)
     );
   }
 
   async findByCode(code: string): Promise<PurchaseDTO | undefined> {
-    return DTOTransformers(
-      await this.purchaseRepository.findByCode(code),
-      PurchaseDTO
+    return plainToClass(
+      PurchaseDTO,
+      await this.purchaseRepository.findByCode(code)
     );
   }
 
   async findAll(id_consultant?: string): Promise<PurchaseDTO[]> {
-    return DTOTransformers(
-      await this.purchaseRepository.findAll(id_consultant),
-      PurchaseDTO
+    return plainToClass(
+      PurchaseDTO,
+      await this.purchaseRepository.findAll(id_consultant)
     );
   }
 
@@ -139,9 +133,9 @@ export class PurchaseService implements IPurchaseService {
       status: status ? status : purchase.status,
     };
 
-    return DTOTransformers(
-      await this.purchaseRepository.update(code, purchase),
-      PurchaseDTO
+    return plainToClass(
+      PurchaseDTO,
+      await this.purchaseRepository.update(code, purchase)
     );
   }
 
@@ -157,7 +151,7 @@ export class PurchaseService implements IPurchaseService {
     if (purchaseDeleted.length === 0) {
       throw new AppError("Purchase not deleted");
     }
-    return DTOTransformers(purchaseDeleted, PurchaseDTO);
+    return plainToClass(PurchaseDTO, purchaseDeleted);
   }
 
   async cashback(cpf: string): Promise<CashBackDTO> {
@@ -188,6 +182,6 @@ export class PurchaseService implements IPurchaseService {
       creditExternal.body.credit
     );
 
-    return DTOTransformers({ cashback }, CashBackDTO);
+    return plainToClass(CashBackDTO, { cashback });
   }
 }

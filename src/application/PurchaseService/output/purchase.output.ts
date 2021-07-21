@@ -52,11 +52,11 @@ export class PurchaseDTO implements Omit<IPurchase, "consultant"> {
 
   @Type(() => ConsultantDTO)
   @IsOptional()
-  @ValidateNested({ each: true })
+  @ValidateNested()
   consultant!: ConsultantDTO;
 
   @Type(() => StatusDTO)
-  @ValidateNested({ each: true })
+  @ValidateNested()
   status!: StatusDTO;
 
   @IsDate()
